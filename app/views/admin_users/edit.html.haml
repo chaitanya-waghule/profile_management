@@ -1,0 +1,12 @@
+/ @todo Add Client side validation
+.container
+  %h2.d-flex.justify-content-center= t('.edit_profile')
+  = form_for @admin_user, remote: true do |admin_user_form|
+    %h4= t('.account_details')
+    = admin_user_form.fields_for :address do |admin_user_address_form|
+      .md-3.row
+        .col-sm-4.col-form-label= admin_user_address_form.label :mobile_number, t('.mobile_number')
+        .col-sm-8
+          = admin_user_address_form.text_field :mobile_number, class: 'address_mobile_number_txt'
+          .error_tag
+    = admin_user_form.submit t('.update_details')

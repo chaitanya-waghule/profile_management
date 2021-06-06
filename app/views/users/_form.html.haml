@@ -1,0 +1,84 @@
+/ @todo Add Client side validations
+/ @todo Show preview of Image to be uploaded
+.container
+  %h2.d-flex.justify-content-center
+    - if user.new_record?
+      = t('.sign_up')
+    - else
+      = t('.edit_profile')
+  = form_for user, remote: true do |user_form|
+    .text-center
+      = image_tag user.attached_profile_picture, alt: user.full_name, class: 'rounded-circle'
+    .text-center
+      = user_form.file_field :profile_picture
+    %h4= t('.account_details')
+    .md-3.row
+      .col-sm-4.col-form-label= user_form.label :email, t('.email')
+      .col-sm-8
+        = user_form.text_field :email, class: 'email_txt'
+        .error_tag
+    - if user.new_record?
+      .md-3.row
+        .col-sm-4.col-form-label= user_form.label :password, t('.password')
+        .col-sm-8
+          = user_form.password_field :password, class: 'password_txt'
+          .error_tag
+      .md-3.row
+        .col-sm-4.col-form-label= user_form.label :password_confirmation, t('.password_confirmation')
+        .col-sm-8
+          = user_form.password_field :password_confirmation, class: 'password_confirmation_txt'
+          .error_tag
+    .md-3.row
+      .col-sm-4.col-form-label= user_form.label :first_name, t('.first_name')
+      .col-sm-8
+        = user_form.text_field :first_name, class: 'first_name_txt'
+        .error_tag
+    .md-3.row
+      .col-sm-4.col-form-label= user_form.label :middle_name, t('.middle_name')
+      .col-sm-8
+        = user_form.text_field :middle_name, class: 'middle_name_txt'
+        .error_tag
+    .md-3.row
+      .col-sm-4.col-form-label= user_form.label :last_name, t('.last_name')
+      .col-sm-8
+        = user_form.text_field :last_name, class: 'last_name_txt'
+        .error_tag
+    = user_form.fields_for :address do |user_address_form|
+      .md-3.row
+        .col-sm-4.col-form-label= user_address_form.label :mobile_number, t('.mobile_number')
+        .col-sm-8
+          = user_address_form.text_field :mobile_number, class: 'address_mobile_number_txt'
+          .error_tag
+      %h4= t('.address_details')
+      .md-3.row
+        .col-sm-4.col-form-label= user_address_form.label :address_line, t('.address_line')
+        .col-sm-8
+          = user_address_form.text_field :address_line, class: 'address_address_line_txt'
+          .error_tag
+      .md-3.row
+        .col-sm-4.col-form-label= user_address_form.label :street, t('.street')
+        .col-sm-8
+          = user_address_form.text_field :street, class: 'address_street_txt'
+          .error_tag
+      .md-3.row
+        .col-sm-4.col-form-label= user_address_form.label :landmark, t('.landmark')
+        .col-sm-8
+          = user_address_form.text_field :landmark, class: 'address_landmark_txt'
+          .error_tag
+      .md-3.row
+        .col-sm-4.col-form-label= user_address_form.label :city, t('.city')
+        .col-sm-8
+          = user_address_form.text_field :city, class: 'address_city_txt'
+          .error_tag
+      .md-3.row
+        .col-sm-4.col-form-label= user_address_form.label :province, t('.state')
+        .col-sm-8
+          = user_address_form.text_field :province, class: 'address_province_txt'
+          .error_tag
+      .md-3.row
+        .col-sm-4.col-form-label= user_address_form.label :zip, t('.pin_code')
+        .col-sm-8
+          = user_address_form.text_field :zip, class: 'address_zip_txt'
+          .error_tag
+      / @todo Add js to show preview
+    = user_form.submit user.new_record? ? t('.sign_up') : t('.update_details')

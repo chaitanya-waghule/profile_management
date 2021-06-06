@@ -1,0 +1,33 @@
+.container
+  .text-center= image_tag user.attached_profile_picture, alt: user.full_name, class: 'rounded-circle'
+  .md-3.row
+    %h4.col-sm-6.text-decoration-underline= t('.account_details')
+    .col-sm-6= link_to t('.edit_profile'), edit_polymorphic_path(user)
+  .md-3.row
+    .col-sm-6.fw-bold= label :user, t('.email')
+    .col-sm-6= user.email
+  .md-3.row
+    .col-sm-6.fw-bold= label :user, t('.full_name')
+    .col-sm-6= user.full_name
+  .md-3.row
+    .col-sm-6.fw-bold= label :user, t('.mobile_number')
+    .col-sm-6= user.address.mobile_number
+  %h4.text-decoration-underline= t('.address_details')
+  .md-3.row
+    .col-sm-6.fw-bold= label :user, t('.address_line')
+    .col-sm-6= user.address.address_line
+  .md-3.row
+    .col-sm-6.fw-bold= label :user, t('.street')
+    .col-sm-6= user.address.street
+  .md-3.row
+    .col-sm-6.fw-bold= label :user, t('.landmark')
+    .col-sm-6= user.address.landmark
+  .md-3.row
+    .col-sm-6.fw-bold= label :user, t('.city')
+    .col-sm-6= user.address.city
+  .md-3.row
+    .col-sm-6.fw-bold= label :user, t('.state')
+    .col-sm-6= user.address.province
+  .md-3.row
+    .col-sm-6.fw-bold= label :user, t('.pin_code')
+    .col-sm-6= user.address.zip

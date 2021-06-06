@@ -1,0 +1,21 @@
+http_authentication: &http_authentication
+  username:
+  password:
+
+production:
+  <<: *http_authentication
+  database_name:
+  schema_username:
+  schema_password:
+
+development:
+  <<: *http_authentication
+  database_name:
+  schema_username:
+  schema_password:
+
+test:
+  <<: *http_authentication
+  database_name:
+  schema_username:
+  schema_password:

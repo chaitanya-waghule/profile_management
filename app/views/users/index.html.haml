@@ -1,0 +1,17 @@
+.container
+  %table.table
+    %thead
+      %tr
+        %th.col= t('.first_name')
+        %th.col= t('.last_name')
+        %th.col= t('.email')
+        %th.col
+        %th.col
+    %tbody
+      - @users.all.each do |user|
+        %tr
+          %td= user.first_name
+          %td= user.last_name
+          %td= user.email
+          %td= link_to t('.view_profile'), user_path(user)
+          %td= link_to t('.edit'), edit_user_path(user)

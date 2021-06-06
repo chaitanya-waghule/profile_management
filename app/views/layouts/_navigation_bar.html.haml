@@ -1,0 +1,23 @@
+%nav.navbar.navbar-dark.bg-dark.navbar.navbar-inverse.navbar-expand-lg
+  .container-fluid
+    .navbar-header
+      %a.navbar-brand{ href: '#' }= t('.profile_management')
+    %ul.nav.navbar-nav.navbar-right
+      %span
+        - if user_logged_in?
+          %button.navbar-toggler{ type: 'button', 'data-bs-toggle': 'collapse', 'data-bs-target': '#navbarNavDarkDropdown', 'aria-controls': 'navbarNavDarkDropdown', 'aria-expanded': 'false', 'aria-label': 'Toggle navigation' }
+            %span.navbar-toggler-icon
+          .collapse.navbar-collapse#navbarNavDarkDropdown
+            %ul.navbar-nav
+              %li.nav-item.dropdown
+                %a.nav-link.dropdown-toggle#navbarDarkDropdownMenuLink{ href: '#', role: 'button', 'data-bs-toggle': 'dropdown', 'aria-expanded': 'false' }
+                  = current_user.full_name
+                %ul.dropdown-menu.dropdown-menu-dark{ 'aria-labelledby': 'navbarDarkDropdownMenuLink' }
+                  %li
+                    = link_to t('.view_profile'), polymorphic_path(current_user), class: 'dropdown-item'
+                    - if current_user_admin?
+                      = link_to t('.view_users'), users_path, class: 'dropdown-item'
+                    = link_to t('.logout'), logout_path, method: :delete, class: 'dropdown-item'
+        - else
+          = link_to t('.sign_up'), new_user_path, class: 'btn btn-outline-success me-2'
+          = link_to t('.login'), login_path, class: 'btn btn-outline-success me-2'

@@ -1,0 +1,12 @@
+/ @todo Add Client side validations
+.container
+  %h2.d-flex.justify-content-center= t('.login')
+  .d-flex.justify-content-center
+    = form_for :user, url: login_path, method: :post do |user_form|
+      .md-3.row
+        .col-sm-3.col-form-label= user_form.label :email, t('.email')
+        .col-sm-9= user_form.text_field :email
+      .md-3.row
+        .col-sm-3.col-form-label= user_form.label :password, t('.password')
+        .col-sm-9= user_form.password_field :password
+      = user_form.submit t('.login')

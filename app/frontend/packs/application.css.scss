@@ -1,0 +1,16 @@
+@import "~bootstrap/scss/bootstrap";
+
+.container {
+  margin-top: 25;
+}
+
+img {
+  height: 250px;
+  width: 250px;
+  margin-bottom: 25;
+}
+
+.error_tag {
+  color: red;
+  font-size: 10;
+}

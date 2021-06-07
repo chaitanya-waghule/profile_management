@@ -53,7 +53,7 @@ RSpec.describe User do
 
   describe 'Associations' do
 
-    it { is_expected.to have_one(:address) }
+    it { is_expected.to have_one(:address).dependent(:destroy) }
     it { is_expected.to have_one_attached(:profile_picture) }
     it { is_expected.to have_secure_password }
 

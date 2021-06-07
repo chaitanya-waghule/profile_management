@@ -1,5 +1,6 @@
 / @todo Add Client side validations
-/ @todo Show preview of Image to be uploaded
+= javascript_pack_tag 'users/form'
+
 .container
   %h2.d-flex.justify-content-center
     - if user.new_record?
@@ -8,9 +9,10 @@
       = t('.edit_profile')
   = form_for user, remote: true do |user_form|
     .text-center
-      = image_tag user.attached_profile_picture, alt: user.full_name, class: 'rounded-circle'
+      = image_tag user.attached_profile_picture, alt: user.full_name, class: 'rounded-circle', id: 'profile_picture_preview'
     .text-center
-      = user_form.file_field :profile_picture
+      = user_form.file_field :profile_picture, onchange: 'showProfilePicturePreview(event)', class: 'profile_picture_txt'
+      .error_tag
     %h4= t('.account_details')
     .md-3.row
       .col-sm-4.col-form-label= user_form.label :email, t('.email')

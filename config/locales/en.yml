@@ -44,6 +44,8 @@ en:
   errors:
     access_denied: Access Denied
     messages:
+      invalid_profile_picture_size: Invalid profile picture size(Must be between 50KB to 1MB)
+      invalid_image_format: Invalid image format(Supported formats are PNG, JPG, etc.)
       not_saved: '%{resource} not saved due to %{count} errors'
       should_only_consist_of_alphanumeric_characters: should only consist of alphanumeric
       should_only_consist_of_letters: should only consist of letters
